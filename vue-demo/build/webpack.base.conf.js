@@ -2,6 +2,8 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+// 在开头引入webpack，后面的plugins那里需要
+const webpack = require("webpack")
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
@@ -36,6 +38,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'jquery': "jquery/src/jquery",
     }
   },
   module: {
@@ -88,5 +91,12 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+      new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery",
+          Popper: ['popper.js', 'default']
+      })
+   ],
 }

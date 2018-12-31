@@ -1,0 +1,8 @@
+{
+	"title.HelloWorld": "Hello world2",
+	"title.LoginIn": "Sign in to start your session",
+	"message.RememberMe": "Remember Me",
+	"button.SignIn": "Sign In",
+	"shareMenu.fragment.ForgotPassword": "I forgot my password",
+	"shareMenu.fragment.RegisterMembership": "Register a new membership"
+}
