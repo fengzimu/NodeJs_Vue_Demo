@@ -37,8 +37,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      'jquery': "jquery/src/jquery",
+      '@': resolve('src')
     }
   },
   module: {
@@ -93,10 +92,10 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
+      new webpack.optimize.CommonsChunkPlugin('common.js'),
       new webpack.ProvidePlugin({
           $: "jquery",
-          jQuery: "jquery",
-          Popper: ['popper.js', 'default']
+          jQuery: "jquery"
       })
    ],
 }

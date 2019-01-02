@@ -7,13 +7,13 @@
     <div class="login-box-body">
       <p class="login-box-msg">{{ $t('title.LoginIn') }}</p>
 
-      <form action="/login" method="post">
+      <form novalidate @submit.stop.prevent="login">
         <div class="form-group has-feedback">
-          <input type="email" name="name" class="form-control" placeholder="Email">
+          <input v-model="email" type="email" name="name" class="form-control" placeholder="Email">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input v-model="password" type="password" name="password" class="form-control" placeholder="Password">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
@@ -47,12 +47,32 @@
 
 <script>
 export default {
-  name: 'login'
+  name: 'login',
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    login(){
+      console.log(this.email)
+      console.log(this.password)
+      this.$axios
+      .post('http://localhost:8088/login')
+      .then(response => {
+        this.info = response.data.bpi
+      })
+      .catch(error => {
+        console.log(error)
+        this.errored = true
+      })
+      .finally(() => this.loading = false)
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import '../../node_modules/font-awesome/css/font-awesome.min.css';
-@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css' 
 </style>

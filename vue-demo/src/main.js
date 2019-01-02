@@ -5,15 +5,17 @@ import App from './App'
 import router from './router'
 import { i18n } from '@/translations/i18n'
 import $ from 'jquery'
-window.jQuery = window.$ = require('jquery')
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'  
-import '../node_modules/bootstrap/dist/js/bootstrap.min'
+import axios from 'axios'
+
+Vue.use(axios)
 Vue.config.productionTip = false
+Vue.prototype.$axios = axios;
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  axios,
   i18n,
   components: { App },
   template: '<App/>'
