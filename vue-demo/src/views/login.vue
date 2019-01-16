@@ -56,9 +56,8 @@ export default {
   },
   methods: {
     login(){
-      console.log(this.email)
-      console.log(this.password)
-      this.$axios
+      this.$router.push({path: '/Exchain'})
+      /*this.$axios
       .post('http://localhost:8088/login')
       .then(response => {
         this.info = response.data.bpi
@@ -67,7 +66,7 @@ export default {
         console.log(error)
         this.errored = true
       })
-      .finally(() => this.loading = false)
+      .finally(() => this.loading = false)*/
     }
   }
 }

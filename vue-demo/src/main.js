@@ -6,10 +6,20 @@ import router from './router'
 import { i18n } from '@/translations/i18n'
 import $ from 'jquery'
 import axios from 'axios'
+//Element part
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+//Bootstrap part
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import Mock from './mock'
 
+Vue.use(ElementUI)
 Vue.use(axios)
 Vue.config.productionTip = false
-Vue.prototype.$axios = axios;
+//Need to remove when pack 
+// axios.defaults.baseURL = 'http://localhost:8080/api'
+Vue.prototype.$axios = axios
 
 /* eslint-disable no-new */
 new Vue({
